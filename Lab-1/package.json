@@ -1,0 +1,19 @@
+{
+  "name": "Lab-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node --transpile-only index.ts"
+  },
+  "keywords": [],
+  "author": "<pasecinic_nichita>",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@types/node": "^16.9.2",
+    "inquirer": "^8.1.5"
+  }
+}

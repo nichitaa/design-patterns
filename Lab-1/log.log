@@ -1,0 +1,137 @@
+
+2021-09-24T19:17:04.600Z # - Application started
+2021-09-24T19:17:06.496Z # - Building a new restaurant
+2021-09-24T19:17:13.262Z # - Changing restaurant name, undefined -> asdf
+2021-09-24T19:17:19.564Z # - Changing restaurant name, asdf -> Normal
+2021-09-24T19:17:24.482Z # - Added new cook: Ion , to restaurant: Normal
+2021-09-24T19:17:30.081Z # - Changing restaurant name, Normal -> Jorj
+2021-09-24T19:17:47.076Z # - Added new cook: Kek , to restaurant: Jorj
+2021-09-24T19:17:50.846Z # - Added new table to restaurant Jorj [total nr of tables: 1]
+2021-09-24T19:17:52.409Z # - Added new table to restaurant Jorj [total nr of tables: 2]
+2021-09-24T19:18:16.994Z # - Added new waiter: Lol to restaurant: Jorj 
+2021-09-24T19:18:22.619Z # - Added new waiter: Lul to restaurant: Jorj 
+2021-09-24T19:18:32.762Z # - Added new waiter: lll to restaurant: Jorj 
+2021-09-24T19:18:37.204Z # - New restaurant Jorj was just build: 
+2021-09-24T19:18:37.204Z # - {
+  "name": "Jorj",
+  "tables": [
+    {
+      "id": 0
+    },
+    {
+      "id": 1
+    }
+  ],
+  "cooks": [
+    "Ion",
+    "Kek"
+  ],
+  "waiters": [
+    "Lol",
+    "Lul",
+    "lll"
+  ]
+}
+2021-09-24T19:18:40.063Z # - Building a new restaurant
+2021-09-24T19:18:43.261Z # - Changing restaurant name, undefined -> second
+2021-09-24T19:18:47.595Z # - Added new waiter: hhfs to restaurant: second 
+2021-09-24T19:18:50.089Z # - Added new cook: asdf , to restaurant: second
+2021-09-24T19:18:51.509Z # - Added new table to restaurant second [total nr of tables: 1]
+2021-09-24T19:18:52.944Z # - Added new table to restaurant second [total nr of tables: 2]
+2021-09-24T19:18:54.087Z # - Added new table to restaurant second [total nr of tables: 3]
+2021-09-24T19:18:56.560Z # - {
+  "name": "second",
+  "tables": [
+    {
+      "id": 0
+    },
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ],
+  "cooks": [
+    "asdf"
+  ],
+  "waiters": [
+    "hhfs"
+  ]
+}
+2021-09-24T19:18:56.560Z # - New restaurant second was just build: 
+2021-09-24T19:18:57.420Z # - Viewing new restaurant
+2021-09-24T19:19:00.560Z # - Picked restaurant: second
+2021-09-24T19:19:23.594Z # - Picked restaurant: Jorj
+2021-09-24T19:19:31.516Z # - Restaurant Jorj will prepare food type: vegetable and food item: salad
+2021-09-24T19:19:36.199Z # - Picked restaurant: second
+2021-09-24T19:19:44.836Z # - Restaurant second will prepare food type: meat and food item: chichen
+2021-09-24T19:53:38.553Z # - Application started
+2021-09-24T19:53:53.328Z # - Building a new restaurant
+2021-09-24T19:54:26.580Z # - {
+  "tables": [],
+  "cooks": [],
+  "waiters": []
+}
+2021-09-24T19:54:26.580Z # - New restaurant undefined was just build: 
+2021-09-24T19:54:27.937Z # - Viewing new restaurant
+2021-09-24T19:57:48.413Z # - Application started
+2021-09-24T19:58:43.960Z # - Application started
+2021-09-24T19:58:53.233Z # - Building a new restaurant
+2021-09-24T19:59:14.945Z # - Changing restaurant name, undefined -> N4
+2021-09-24T19:59:26.596Z # - Application started
+2021-09-24T19:59:32.957Z # - Building a new restaurant
+2021-09-24T19:59:34.973Z # - Changing restaurant name, undefined -> Name
+2021-09-24T19:59:39.437Z # - Added new cook: cook1 , to restaurant: Name
+2021-09-24T19:59:43.082Z # - Added new cook: cook2 , to restaurant: Name
+2021-09-24T19:59:46.261Z # - Added new table to restaurant Name [total nr of tables: 1]
+2021-09-24T19:59:50.893Z # - Added new waiter: waiter1 to restaurant: Name 
+2021-09-24T19:59:53.197Z # - Added new table to restaurant Name [total nr of tables: 2]
+2021-09-24T19:59:56.725Z # - New restaurant Name was just build: 
+2021-09-24T19:59:56.725Z # - {
+  "name": "Name",
+  "tables": [
+    {
+      "id": 0
+    },
+    {
+      "id": 1
+    }
+  ],
+  "cooks": [
+    "cook1",
+    "cook2"
+  ],
+  "waiters": [
+    "waiter1"
+  ]
+}
+2021-09-24T19:59:59.588Z # - Building a new restaurant
+2021-09-24T20:00:06.828Z # - Changing restaurant name, undefined -> restaurant2
+2021-09-24T20:00:09.838Z # - Added new cook: asdf , to restaurant: restaurant2
+2021-09-24T20:00:13.363Z # - Added new table to restaurant restaurant2 [total nr of tables: 1]
+2021-09-24T20:00:15.703Z # - Added new table to restaurant restaurant2 [total nr of tables: 2]
+2021-09-24T20:00:20.471Z # - Added new waiter: waiter2 to restaurant: restaurant2 
+2021-09-24T20:00:24.243Z # - New restaurant restaurant2 was just build: 
+2021-09-24T20:00:24.244Z # - {
+  "name": "restaurant2",
+  "tables": [
+    {
+      "id": 0
+    },
+    {
+      "id": 1
+    }
+  ],
+  "cooks": [
+    "asdf"
+  ],
+  "waiters": [
+    "waiter2"
+  ]
+}
+2021-09-24T20:00:25.504Z # - Viewing new restaurant
+2021-09-24T20:00:29.856Z # - Picked restaurant: restaurant2
+2021-09-24T20:00:36.118Z # - Restaurant restaurant2 will prepare food type: vegetable and food item: salad
+2021-09-24T20:00:40.458Z # - Picked restaurant: Name
+2021-09-24T20:00:43.426Z # - Restaurant Name will prepare food type: meat and food item: chichen
