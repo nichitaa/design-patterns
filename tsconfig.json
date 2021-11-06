@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "target": "es6",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "outFile": "build/index.js",
+    "moduleResolution": "node"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "index.ts",
+    "domain/singleton/demo.ts",
+    "domain/singleton/singleton.ts",
+    "domain/builder/builder.ts",
+    "domain/builder/demo.ts",
+    "domain/factoryMethod/factoryMethod.ts",
+    "domain/factoryMethod/demo.ts",
+    "domain/adapter/adapter.ts",
+    "domain/adapter/demo.ts",
+    "domain/facade/facade.ts",
+    "domain/facade/demo.ts",
+    "domain/proxy/demo.ts",
+    "domain/proxy/proxy.ts",
+  ]
+}
