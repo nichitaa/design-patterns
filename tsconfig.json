@@ -12,6 +12,7 @@
   ],
   "files": [
     "index.ts",
+    "domain/patterns.ts",
     "domain/singleton/demo.ts",
     "domain/singleton/singleton.ts",
     "domain/builder/builder.ts",

@@ -17,7 +17,7 @@ $ npm start # compile and run the builded version (tsc && node build/index.js)
 
 ```
 
-![gif](https://github.com/nichitaa/design-patterns/blob/main/gif/gif.gif)
+![gif](https://github.com/nichitaa/design-patterns/blob/main/gif/gif1.gif)
 
 ### **Creational design patterns**
 
@@ -328,6 +328,228 @@ namespace ProxyPattern {
 
         checkAuth(token: string) {
             return token === 'securedToken';
+        }
+    }
+}
+```
+
+### **Behavioral design patterns**
+
+In software engineering, behavioral design patterns have the purpose of identifying common communication patterns between different software entities. By doing so, these patterns increase flexibility in carrying out this communication.
+
+**Iterator** is a behavioral design pattern that allows sequential traversal through a complex data structure without exposing its internal details.
+
+```typescript
+namespace IteratorPattern {
+
+    interface Iterator<ItemType, ReturnType> {
+        /**
+         * @returns the item at current position
+         */
+        current(): ItemType;
+
+        /**
+         * @returns the item following the logic described below
+         */
+        next(): ReturnType;
+
+        /**
+         * @returns the current position
+         */
+        key(): number;
+
+        /**
+         * @returns boolean value, true if in collection are still more items
+         * to be traversed, else returns false and resets the current position
+         */
+        valid(): boolean;
+
+        /**
+         * @returns void resets the position to initial
+         */
+        rewind(): void;
+    }
+
+    interface Aggregator<ItemType, ReturnType> {
+        getIterator(): Iterator<ItemType, ReturnType>;
+    }
+
+    /**
+     * Concrete implementation
+     */
+    interface IteratorItem {
+        type: 'string' | 'number' | 'idk',
+        value?: string | number
+    }
+
+    interface IteratorReturn {
+        idx: number;
+        val: IteratorItem['value'];
+    }
+
+    /**
+     * Logic for this CustomIterator is straightforward,
+     * it will just skip the elements with type: 'idk' in collection,
+     * and additional it will type check the value of the item property
+     * to match the specified type
+     */
+    export class CustomIterator implements Iterator<IteratorItem, IteratorReturn> {
+        private position: number = 0;
+
+        constructor(private collection: CustomCollection) {}
+
+        current(): IteratorItem {
+            return this.collection.getItems()[this.position];
+        }
+
+        key(): number {
+            return this.position;
+        }
+
+        next(): IteratorReturn {
+            const item = this.collection.getItems()[this.position];
+            switch (item.type) {
+                case 'string': {
+                    if (item.value && typeof item.value !== 'string') {
+                        throw new Error(`Type is string but was given the value: ${item.value}`);
+                    }
+                    break;
+                }
+                case 'number': {
+                    if (item.value && typeof item.value !== 'number') {
+                        throw new Error(`Type is number but was given the value: ${item.value}`);
+                    }
+                    break;
+                }
+                case 'idk': {
+                    // skip items with 'idk' types
+                    this.position++;
+                    return this.next();
+                }
+                default: {
+                    throw new Error(`Unhandled type: ${item.type}`);
+                }
+            }
+            const res = {idx: this.position, val: item.value};
+            this.position++;
+            return res;
+        }
+
+        rewind(): void {
+            this.position = 0;
+        }
+
+        valid(): boolean {
+            const exists = this.position < this.collection.getCount();
+            if (exists) {
+                return exists;
+            } else {
+                this.rewind();
+                return exists;
+            }
+        }
+    }
+
+    /**
+     * A CustomCollection that can use the CustomIterator logic to
+     * iterate in collection items
+     */
+    export class CustomCollection implements Aggregator<IteratorItem, IteratorReturn> {
+        private items: IteratorItem[] = [];
+
+        public getItems(): IteratorItem[] {
+            return this.items;
+        }
+
+        public getCount(): number {
+            return this.items.length;
+        }
+
+        public add(item: IteratorItem): void {
+            this.items.push(item);
+        }
+
+        public getIterator(): Iterator<IteratorItem, IteratorReturn> {
+            return new CustomIterator(this);
+        }
+
+    }
+}
+```
+
+**Observer** pattern provides a way to subscribe and unsubscribe to and from these events for any object that implements a subscriber interface.
+
+```typescript
+namespace ObserverPattern {
+    interface Subject {
+        registerObserver(o: Observer);
+
+        removeObserver(o: Observer);
+
+        notifyObservers();
+    }
+
+    interface Observer {
+        update(course: number);
+    }
+
+    /**
+     * Our Subject class that will be providing the current price of BTC_USD
+     */
+    export class TradingPlatform implements Subject {
+        private observers: Observer[] = [];
+
+        private BTC_USD: number;
+
+        setBTCUSDPrice(price: number) {
+            console.log(`[live] BTC-USD: ${price}`);
+            this.BTC_USD = price;
+            this.notifyObservers();
+        }
+
+        registerObserver(o: Observer) {
+            this.observers.push(o);
+        }
+
+        removeObserver(o: Observer) {
+            const idx = this.observers.indexOf(o);
+            this.observers.splice(idx, 1);
+        }
+
+        notifyObservers() {
+            for (let o of this.observers) {
+                o.update(this.BTC_USD);
+            }
+        }
+    }
+
+    /**
+     * Our Observers that will consume and get notified of the BTC-USD price provided by the Subject
+     */
+    export class WalletDashboard implements Observer {
+        /**
+         * @param courseProvider - is the actual TradingPlatform in this example
+         */
+        constructor(private courseProvider: Subject) {
+            this.courseProvider.registerObserver(this);
+        }
+
+        update(BTC_USD_Price: number) {
+            if (BTC_USD_Price > 60000) {
+                console.log('BTC price is higher then 60k$, app recommendation is to sell it!');
+            } else {
+                console.log('BTC course is less then 60k$, app recommendation is to buy it!');
+            }
+        }
+    }
+
+    export class NewsApp implements Observer {
+        constructor(private courseProvider: Subject) {
+            this.courseProvider.registerObserver(this);
+        }
+
+        update(BTC_USD_Price: number) {
+            console.log(`Breaking NEWS: Is Bitcoin real money ? it is ${BTC_USD_Price}$ now!`);
         }
     }
 }
